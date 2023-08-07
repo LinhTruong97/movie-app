@@ -83,6 +83,7 @@ function AuthProvider({ children }) {
 
     const logout = async (callback) => {
         window.localStorage.removeItem("username");
+        window.localStorage.removeItem("favorite");
         dispatch({ type: LOGOUT });
         callback();
     };

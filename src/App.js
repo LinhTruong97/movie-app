@@ -3,15 +3,20 @@ import { BrowserRouter } from "react-router-dom";
 import Router from "./routes";
 import { AuthProvider } from "./contexts/AuthContext";
 import ThemeProvider from "./contexts/ThemeProvider";
+import { MovieProvider } from "./contexts/MovieContext";
+import "./App.css"
+
 
 function App() {
     return (
         <AuthProvider>
-            <BrowserRouter>
-                <ThemeProvider>
-                    <Router />
-                </ThemeProvider>
-            </BrowserRouter>
+            <MovieProvider>
+                <BrowserRouter>
+                    <ThemeProvider>
+                        <Router />
+                    </ThemeProvider>
+                </BrowserRouter>
+            </MovieProvider>
         </AuthProvider>
     );
 }

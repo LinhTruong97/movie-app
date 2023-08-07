@@ -1,25 +1,49 @@
-import React from "react";
-import useAuth from "../hooks/useAuth"
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import Banner from "../components/Banner";
+import { Box } from "@mui/material";
+import VerticalMovieList from "../components/VerticalMovieList";
+import HorizontalMovieList from "../components/HorizontalMovieList";
+import useGenres from '../hooks/useGenres';
+
+const verticalMovieListTitle = [
+    {
+        title: "Popular Movies",
+        keyword: "popular"
+    },
+    {
+        title: "Top Rated Movies",
+        keyword: "top_rated"
+    },
+    {
+        title: "Upcoming Movies",
+        keyword: "upcoming"
+    }
+]
+
+const horizontalMovieListTitle = ["Action", "Comedy", "Romance", "Thriller"]
 
 function HomePage() {
-    const auth = useAuth();
-    let navigate = useNavigate();
+    const { genresList } = useGenres();
 
-    if (!auth.user) {
-        return <p>You are not logged in.</p>;
-    }
+    const getGenreIdByName = (genreName) => {
+        const genre = genresList.find((genre) => genre.name === genreName);
+        return genre ? genre.id : null;
+    };
 
     return (
         <div>
-            <h1>Welcome {auth.user?.username}</h1>
-            <button
-                onClick={() => {
-                    auth.logout(() => navigate("/"));
-                }}
-            >
-                Sign out
-            </button>
+            <Banner />
+            <Box sx={{ flexGrow: 1 }} />
+            {verticalMovieListTitle.map((item) => (
+                <VerticalMovieList key={item.title} title={item.title} keyword={item.keyword} />
+            ))}
+            {horizontalMovieListTitle.map((genreName) => (
+                <HorizontalMovieList
+                    key={genreName}
+                    title={genreName}
+                    genreId={getGenreIdByName(genreName)}
+                />
+            ))}
         </div>
     );
 }
