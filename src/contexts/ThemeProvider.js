@@ -8,9 +8,23 @@ import {
 function ThemeProvider({ children }) {
     const themeOptions = {
         palette: {
-            mode: "dark"
+            mode: "dark",
+            primary: {
+                main: '#99CCFF',
+                light: '#42a5f5',
+                dark: '#1565c0',
+                contrastText: '#fff',
+            },
         },
         shape: { borderRadius: 8 },
+        typography: {
+            fontFamily: [
+                'Gruppo',
+                'sans-serif',
+                'Mogra',
+                'cursive'
+            ].join(','),
+        }
     };
 
     const theme = createTheme(themeOptions);

@@ -11,7 +11,7 @@ import useMovie from '../hooks/useMovie';
 import LoadingScreen from '../components/LoadingScreen';
 import { useNavigate } from 'react-router-dom';
 
-const CentterPagination = styled(Pagination)(() => ({
+const CenterPagination = styled(Pagination)(() => ({
     ul: {
         justifyContent: "center",
     },
@@ -50,7 +50,7 @@ function CategoryPage() {
         defaultValues,
     });
 
-    const { watch } = methods;
+    const { watch, reset } = methods;
     const filters = watch();
     const filteredMovies = applyFilter(moviesList, filters, getGenreIdByName);
 
@@ -63,15 +63,19 @@ function CategoryPage() {
 
     }, [pages, filteredMovies, totalPages]);
 
+    const resetFilter = () => {
+        reset();
+    }
+
     return (
         <>
-            <Box sx={{ display: "flex" }}>
-                <Stack>
+            <Box sx={{ display: "flex", flexDirection: { xs: "column", md: "row" } }}>
+                <Stack sx={{ alignItems: { xs: "center", md: "flex-start" } }} >
                     <FormProvider methods={methods}>
-                        <MovieFilter />
+                        <MovieFilter resetFilter={resetFilter} />
                     </FormProvider>
                 </Stack>
-                <Grid container sx={{ justifyContent: "center" }} spacing={2}>
+                <Grid container sx={{ justifyContent: "center", p: 3 }} spacing={2}>
                     {loading ? (
                         <LoadingScreen />
                     ) : (
@@ -89,12 +93,12 @@ function CategoryPage() {
                                     <Typography variant="body1" sx={{ mt: 4, fontSize: "25px" }}>No movie found</Typography>
                                 )
                             }
-                            < CentterPagination
+                            < CenterPagination
                                 sx={{ marginTop: "15px" }}
                                 count={totalPages}
                                 page={pages}
                                 renderItem={(item) => (
-                                    <CustomPaginationItem {...item} />
+                                    <CustomPaginationItem {...item} sx={{ fontSize: '20px', fontWeight: 'bold' }} />
                                 )}
                                 onChange={(event, value) => {
                                     setPages(value);

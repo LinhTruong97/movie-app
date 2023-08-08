@@ -26,7 +26,7 @@ function VerticalMovieList({ title, keyword }) {
                 setMoviesList(data);
                 setError('');
             } catch (error) {
-                console.log(error);
+                console.log('getMoviesListKeyword', error);
                 setError(error.message);
             }
             setLoading(false);
@@ -67,7 +67,7 @@ function VerticalMovieList({ title, keyword }) {
 
     return (
         <>
-            <Typography variant="h5" m={3}>
+            <Typography variant="h4" m={3} sx={{ color: (theme) => theme.palette.primary.main, fontWeight: 'bold' }}>
                 {title}
             </Typography>
 
@@ -85,7 +85,7 @@ function VerticalMovieList({ title, keyword }) {
                                     onClick={() => handleMovieClick(movie)}
                                     item xs={6} sm={4} md={3}
                                 >
-                                    <VerticalMovieCard movie={movie} className="movieCard" />
+                                    <VerticalMovieCard movie={movie} />
                                 </Grid>
                             ))}
                         </Slider>

@@ -22,7 +22,7 @@ function MovieProvider({ children }) {
                 setMoviesList(data);
                 setError('');
             } catch (error) {
-                console.log(error);
+                console.log('getMoviesList', error);
                 setError(error.message);
             }
             setLoading(false);

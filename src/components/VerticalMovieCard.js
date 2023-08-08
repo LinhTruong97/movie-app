@@ -34,7 +34,7 @@ function VerticalMovieCard({ movie }) {
                     alt="image"
                 />
                 <CardContent >
-                    <Typography gutterBottom variant="body1" noWrap sx={{ textAlign: "center" }} >
+                    <Typography gutterBottom variant="h6" noWrap sx={{ textAlign: "center" }} >
                         {movie.title ? movie.title : movie.name}
                     </Typography>
                 </CardContent>

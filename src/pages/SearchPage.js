@@ -5,7 +5,7 @@ import VerticalMovieCard from '../components/VerticalMovieCard';
 import styled from '@emotion/styled';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-const CentterPagination = styled(Pagination)(() => ({
+const CenterPagination = styled(Pagination)(() => ({
     ul: {
         justifyContent: "center",
     },
@@ -13,7 +13,7 @@ const CentterPagination = styled(Pagination)(() => ({
 
 const CustomPaginationItem = styled(PaginationItem)(({ theme }) => ({
     '&.Mui-selected': {
-        color: theme.palette.primary.main,
+        color: 'black',
         backgroundColor: theme.palette.primary.light,
         '&:hover': {
             backgroundColor: theme.palette.primary.main,
@@ -67,12 +67,12 @@ function SearchPage() {
                     </Grid>
                 ))}
             </Grid>
-            <CentterPagination
+            <CenterPagination
                 sx={{ marginTop: "15px" }}
                 count={totalPages}
                 page={pages}
                 renderItem={(item) => (
-                    <CustomPaginationItem {...item} />
+                    <CustomPaginationItem {...item} sx={{ fontSize: '20px', fontWeight: 'bold' }} />
                 )}
                 onChange={(event, value) => {
                     setPages(value);

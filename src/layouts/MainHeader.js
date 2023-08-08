@@ -65,7 +65,7 @@ function MainHeader() {
                             >
                                 <MenuItem onClick={() => navigate("/")}>Home</MenuItem>
                                 {pages.map((page) => (
-                                    <MenuItem key={page} onClick={() => navigate(`/${page.toLowerCase()}`)}>
+                                    <MenuItem key={page} onClick={() => navigate(`/${page.toLowerCase()}`)} >
                                         {page}
                                     </MenuItem>
                                 ))}
@@ -76,7 +76,7 @@ function MainHeader() {
                             <Box sx={{ display: 'flex' }}>
                                 <Button
                                     key="Home"
-                                    sx={{ my: 2, color: 'white', display: 'block' }}
+                                    sx={{ my: 2, color: '#99CCFF', display: 'block', fontWeight: 'bold', fontSize: '20px' }}
                                     onClick={() => navigate("/")}
                                 >
                                     Home
@@ -84,7 +84,7 @@ function MainHeader() {
                                 {pages.map((page) => (
                                     <Button
                                         key={page}
-                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                        sx={{ my: 2, color: '#99CCFF', display: 'block', fontWeight: 'bold', fontSize: '20px' }}
                                         onClick={() => navigate(`/${page.toLowerCase()}`)}
                                     >
                                         {page}
@@ -123,25 +123,25 @@ function MainHeader() {
                     >
                         {auth.user ? (
                             [
-                                <MenuItem key="user" onClick={handleCloseUserMenu} >
-                                    <Typography>
+                                <MenuItem key="user" onClick={handleCloseUserMenu}  >
+                                    <Typography sx={{ fontSize: '20px' }}>
                                         Hi {auth.user.username}
                                     </Typography>
                                 </MenuItem>,
                                 ...settings.map((setting) => (
                                     <MenuItem key={setting} onClick={handleCloseUserMenu} >
-                                        <Typography>{setting}</Typography>
+                                        <Typography sx={{ fontSize: '20px' }}>{setting}</Typography>
                                     </MenuItem>
                                 )),
                                 <MenuItem key="logout" onClick={handleLogout} >
-                                    <Typography>
+                                    <Typography sx={{ fontSize: '20px' }}>
                                         Logout
                                     </Typography>
                                 </MenuItem>
                             ]
                         ) : (
-                            <MenuItem key="login" onClick={() => handleLogin()} >
-                                <Typography>
+                            <MenuItem key="login" onClick={() => handleLogin()}  >
+                                <Typography sx={{ fontSize: '20px' }}>
                                     Login
                                 </Typography>
                             </MenuItem>

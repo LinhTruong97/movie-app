@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Box, Card, CardContent, Modal, Typography } from '@mui/material';
+import { Box, Button, Card, CardContent, Modal, Typography } from '@mui/material';
 import React from 'react'
 import { Link } from 'react-router-dom'
 
@@ -28,18 +28,15 @@ function MovieCardModal({ movie, onClose }) {
                             boxShadow: 0,
                         }}
                     >
-                        <CardContent sx={{ display: "flex", flexDirection: 'column', gap: "20px", textAlign: 'center' }}  >
-
-                            <Typography variant="h4">{movie.title}</Typography>
+                        <CardContent sx={{ display: "flex", flexDirection: 'column', gap: 1, textAlign: 'center' }}  >
+                            <Typography variant="h4" sx={{ fontWeight: 'bold', color: "#99CCFF" }}>{movie.title}</Typography>
                             <div>
-                                <p>Score: {movie.vote_average}</p>
-                                <p>{movie.overview}</p>
+                                <p style={{ fontSize: '20px' }}>Score: {movie.vote_average}</p>
+                                <p style={{ fontSize: '20px' }}>{movie.overview}</p>
                                 <Link to={`/movie/${movie.id}`} >
-                                    <button>See More</button>
+                                    <Button sx={{ fontSize: '20px', fontWeight: 'bold' }} variant="outlined">Show More</Button>
                                 </Link>
                             </div>
-
-
                         </CardContent>
 
                     </Card>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Stack, Typography } from "@mui/material";
+import { Button, Stack, Typography } from "@mui/material";
 import { FMultiCheckbox } from "./form";
 
 import FRangeSlider from './form/FRangeSlider';
@@ -12,12 +12,12 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function MovieFilter({ resetFilter }) {
     const { genresList } = useGenres();
-    const [isGenresOpen, setIsGenresOpen] = useState(true);
-    const [isUserScoreOpen, setIsUserScoreOpen] = useState(true);
+    const [isGenresOpen, setIsGenresOpen] = useState(false);
+    const [isUserScoreOpen, setIsUserScoreOpen] = useState(false);
 
 
     return (
-        <Stack spacing={3} sx={{ p: 3, width: 250 }}>
+        <Stack spacing={[1, 3, 5]} sx={{ p: 3, width: 230 }}>
             <Accordion
                 expanded={isGenresOpen}
                 onChange={() => setIsGenresOpen(!isGenresOpen)}
@@ -27,7 +27,7 @@ function MovieFilter({ resetFilter }) {
                     aria-controls="panel-genres-content"
                     id="panel-genres-header"
                 >
-                    <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#99CCFF' }}>
                         Genres
                     </Typography>
                 </AccordionSummary>
@@ -50,7 +50,7 @@ function MovieFilter({ resetFilter }) {
                     aria-controls="panel-genres-content"
                     id="panel-user-score-header"
                 >
-                    <Typography variant="h6" sx={{ fontWeight: 600 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#99CCFF' }}>
                         User Score
                     </Typography>
                 </AccordionSummary>
@@ -58,6 +58,8 @@ function MovieFilter({ resetFilter }) {
                     <FRangeSlider sx={{ ml: "10px" }} name="userScore" min={0} max={10} />
                 </AccordionDetails>
             </Accordion>
+
+            <Button onClick={resetFilter} sx={{ fontSize: '20px', fontWeight: 'bold' }} variant='outlined' >Clear All</Button>
         </Stack>
     );
 }

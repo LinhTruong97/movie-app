@@ -58,7 +58,7 @@ function HorizontalMovieList({ title, genreId }) {
     };
     return (
         <div>
-            <Typography variant="h5" m={3}>
+            <Typography variant="h4" m={3} sx={{ color: (theme) => theme.palette.primary.main, fontWeight: 'bold' }}>
                 {title}
             </Typography>
 
