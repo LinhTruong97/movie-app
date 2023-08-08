@@ -2,13 +2,16 @@ import React from 'react'
 import Grid from "@mui/material/Grid";
 import VerticalMovieCard from '../components/VerticalMovieCard';
 import { useNavigate } from 'react-router-dom';
+import { Typography } from '@mui/material';
 
 function FavoritePage() {
     let list = JSON.parse(localStorage.getItem("favorite")) || [];
     const navigate = useNavigate()
 
     if (list.length === 0) {
-        return null
+        return (
+            <Typography variant="h3" sx={{ textAlign: 'center', m: 3 }}>No favorite movie added</Typography>
+        )
     };
     return (
         <div>

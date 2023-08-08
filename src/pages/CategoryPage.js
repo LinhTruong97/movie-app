@@ -82,28 +82,32 @@ function CategoryPage() {
                         <>
                             {
                                 currentMovies.length > 0 ? (
-                                    <Grid container spacing={2}>
-                                        {currentMovies.map((movie, index) => (
-                                            <Grid key={movie.id} item xs={6} sm={4} md={3} onClick={() => navigate(`/movie/${movie.id}`)}>
-                                                <VerticalMovieCard movie={movie} />
-                                            </Grid>
-                                        ))}
-                                    </Grid>
+                                    <>
+                                        <Grid container spacing={2}>
+                                            {currentMovies.map((movie, index) => (
+                                                <Grid key={movie.id} item xs={6} sm={4} md={3} onClick={() => navigate(`/movie/${movie.id}`)}>
+                                                    <VerticalMovieCard movie={movie} />
+                                                </Grid>
+                                            ))}
+                                        </Grid>
+                                        < CenterPagination
+                                            sx={{ marginTop: "15px" }}
+                                            count={totalPages}
+                                            page={pages}
+                                            renderItem={(item) => (
+                                                <CustomPaginationItem {...item} sx={{ fontSize: '20px', fontWeight: 'bold' }} />
+                                            )}
+                                            onChange={(event, value) => {
+                                                setPages(value);
+                                            }}
+                                        />
+                                    </>
+
                                 ) : (
                                     <Typography variant="body1" sx={{ mt: 4, fontSize: "25px" }}>No movie found</Typography>
                                 )
                             }
-                            < CenterPagination
-                                sx={{ marginTop: "15px" }}
-                                count={totalPages}
-                                page={pages}
-                                renderItem={(item) => (
-                                    <CustomPaginationItem {...item} sx={{ fontSize: '20px', fontWeight: 'bold' }} />
-                                )}
-                                onChange={(event, value) => {
-                                    setPages(value);
-                                }}
-                            />
+
                         </>
                     )}
                 </Grid>

@@ -42,8 +42,8 @@ function LoginPage() {
                 </Typography>
                 <FTextField name="username" label="Username" />
 
-                <Button type="submit" variant="contained">
-                    Login
+                <Button type="submit" variant="contained" sx={{ fontSize: '25px', fontWeight: 'bold', color: 'black' }}>
+                    Submit
                 </Button>
             </Stack>
         </FormProvider>
