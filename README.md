@@ -1,4 +1,4 @@
-# Movie App 
+# Movie App (start from scratch)
 
 This project was build to display movie list web page
 https://tthl-movie-app.netlify.app/
